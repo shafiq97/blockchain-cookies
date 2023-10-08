@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DSK Cookies</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- DataTables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+    />
+  </head>
+  <body>
+    <section class="ftco-section">
+      <div class="container-fluid px-md-5">
+        <div class="row justify-content-between">
+          <div class="col-md-8 order-md-last">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <a class="navbar-brand" href="index.html"
+                  >DSK Cookies</a
+                >
+              </div>
+              <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
+                <form action="#" class="searchform order-lg-last"></form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="social-media"></div>
+          </div>
+        </div>
+      </div>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+        id="ftco-navbar"
+      >
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
+          <!-- <li class="nav-item"><a href="login.html" class="nav-link">Seller</a></li> -->
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Home
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="aboutus.html">About us</a>
+              <a class="dropdown-item" href="contact.html">Contact</a>
+              <a class="dropdown-item" href="faq.html">FAQ</a>
+            </div>
+          </li>
+          
+          <li class="nav-item"><a href="index.html" class="nav-link">Admin</a></li>
+          <li class="nav-item"><a href="queryProducts.html" class="nav-link">Product Details</a></li>
+          <li class="nav-item"><a href="verifyProducts.html" class="nav-link">Product Verification</a></li>
+        </ul>
+      </div>
+        </div>
+      </nav>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Product List</h2>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Product Details</h2>
+        <!-- Added an ID for the table -->
+        <table class="table" id="productsTable">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product SN</th>
+              <th>Product Name</th>
+              <th>Expiry Date</th>
+              <th>Product Price</th>
+              <th>Product Status</th>
+              <th>Product Image</th>
+            </tr>
+          </thead>
+          <tbody id="logdata"></tbody>
+        </table>
+        <center>
+          <p>Your address is <b id="add"></b></p>
+        </center>
+      </div>
+    </section>
+
+    <!-- Load jQuery first -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Then load other scripts -->
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+		<script src="js/shared.js"></script>
+    <script src="js/productDataApp.js"></script>
+
+    <!-- DataTables JS -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"
+    ></script>
+
+    <!-- Initialize DataTables after all scripts have loaded -->
+    <script>
+    
+    </script>
+  </body>
+</html>

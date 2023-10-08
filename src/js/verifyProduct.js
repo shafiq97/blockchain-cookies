@@ -127,23 +127,66 @@ App = {
                 return productInstance.viewProductItems({ from: account });
 
             }).then(function (result) {
+
+                var productIds = [];
                 var productSNs = [];
+                var productNames = [];
+                var productBrands = [];
+                var productPrices = [];
+                var productStatus = [];
                 var isProductExists = false;
+
+                // Display the image from the imageUrls array
+                var storedImageUrls = localStorage.getItem('imageUrls');
+                if (storedImageUrls) {
+                    imageUrls = JSON.parse(storedImageUrls);
+                }
+
+                for (var k = 0; k < result[0].length; k++) {
+                    productIds[k] = result[0][k];
+                }
+
                 for (var k = 0; k < result[1].length; k++) {
                     productSNs[k] = web3.toAscii(result[1][k]);
 
                 }
 
+                console.log('result1', web3.toAscii(result[1][8]));
+
+                for (var k = 0; k < result[2].length; k++) {
+                    productNames[k] = web3.toAscii(result[2][k]);
+                }
+
+                for (var k = 0; k < result[3].length; k++) {
+                    productBrands[k] = web3.toAscii(result[3][k]);
+                }
+
+                for (var k = 0; k < result[4].length; k++) {
+                    productPrices[k] = result[4][k];
+                }
+
+                for (var k = 0; k < result[5].length; k++) {
+                    productStatus[k] = web3.toAscii(result[5][k]);
+                }
+
+                for (var k = 0; k < result[1].length; k++) {
+                    productSNs[k] = web3.toAscii(result[1][k]);
+
+                }
+
+                var index = 0;
+
                 for (var i = 0; i < result[0].length; i++) {
                     App.productSNs.push(productSNs[i]);
                     if (productSN === App.productSNs[i].replace(/\0/g, '')) {
                         isProductExists = true;
+                        index == i;
                         console.log('true');
                     }
 
                     console.log(App.productSNs[i], " : ", productSN);
                 }
-                
+
 
 
                 //var isProductExists = App.productSNs.includes(productSN);
@@ -151,9 +194,14 @@ App = {
                 var t = "";
                 var tr = "<tr>";
                 if (isProductExists) {
-                    tr += "<td>" + "Genuine Product." + "</td>";
+                    tr += "<th>STATUS<td>NAME</td><td>PRICE</td><td>IMAGE</td></th></tr><tr>";
+
+                    tr += "<td>" + "VALID PRODUCT" + "</td>";
+                    tr += "<td>" + productNames[index] + "</td>";
+                    tr += "<td>" + "RM " + productPrices[index] + "</td>";
+                    tr += "<td>" + "<img src='" + imageUrls[index] + "'alt='Product Image' width='100'></img></td>";
                 } else {
-                    tr += "<td>" + "Fake Product." + "</td>";
+                    tr += "<td>" + "INVALID PRODUCT" + "</td>";
                 }
                 tr += "</tr>";
                 t += tr;

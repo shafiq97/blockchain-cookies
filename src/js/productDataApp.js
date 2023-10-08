@@ -98,36 +98,45 @@ App = {
 
                 console.log('imagesUrl', imageUrls);
 
-                var t = "";
-                document.getElementById('logdata').innerHTML = t;
+                var cardsContent = "";
+                document.getElementById('logdata').innerHTML = cardsContent;
                 for (var i = 0; i < result[0].length; i++) {
-                    var temptr = "<td>" + productPrices[i] + "</td>";
-                    if (temptr === "<td>0</td>") {
+
+                    if (productPrices[i] === "0") {
                         break;
                     }
 
-                    var tr = "<tr>";
-                    tr += "<td>" + productIds[i] + "</td>";
-                    tr += "<td>" + productSNs[i] + "</td>";
-                    tr += "<td>" + productNames[i] + "</td>";
-                    tr += "<td>" + productBrands[i] + "</td>";
-                    tr += "<td>" + productPrices[i] + "</td>";
-                    tr += "<td>" + productStatus[i] + "</td>";
+                    var card = '<div class="col-md-4">';
+                    card += '<div class="card mb-4">';
+
                     // Display the image from the imageUrls array
                     var storedImageUrls = localStorage.getItem('imageUrls');
                     if (storedImageUrls) {
                         imageUrls = JSON.parse(storedImageUrls);
                     }
                     if (imageUrls[i]) {
-                        tr += "<td><img src='" + imageUrls[i] + "' alt='Product Image' width='100'></td>";
+                        card += '<img height=250px; width=100%; src="' + imageUrls[i] + '" class="card-img-top" alt="Product Image" >';
                     } else {
-                        tr += "<td>No Image</td>";
+                        card += '<div class="card-header">No Image</div>';
                     }
-                    tr += "</tr>";
-                    t += tr;
 
+                    card += '<div class="card-body">';
+                    card += '<h5 class="card-title">Product ID: ' + productIds[i] + '</h5>';
+                    card += '<p class="card-text">Product SN: ' + productSNs[i] + '</p>';
+                    card += '<p class="card-text">Product Name: ' + productNames[i] + '</p>';
+                    card += '<p class="card-text">Product Brand: ' + productBrands[i] + '</p>';
+                    card += '<p class="card-text">Price: $' + productPrices[i] + '</p>';
+                    card += '<p class="card-text">Status: ' + productStatus[i] + '</p>';
+                    card += '</div>'; // end of card-body
+
+                    card += '</div>'; // end of card
+                    card += '</div>'; // end of col-md-4
+
+                    cardsContent += card;
                 }
-                document.getElementById('logdata').innerHTML += t;
+
+                document.getElementById('logdata').innerHTML = cardsContent;
+
                 document.getElementById('add').innerHTML = account;
                 $(document).ready(function () {
                     // Initialize the table as a DataTable with options
